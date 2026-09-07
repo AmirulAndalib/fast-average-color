@@ -68,7 +68,7 @@ export function getSrc(resource: HTMLCanvasElement | OffscreenCanvas | HTMLImage
 }
 
 export function isInstanceOfHTMLImageElement(resource: FastAverageColorResource): resource is HTMLImageElement {
-    return typeof HTMLImageElement !== 'undefined' && resource instanceof HTMLImageElement;
+    return Object.prototype.toString.call(resource) === '[object HTMLImageElement]';
 }
 
 const hasOffscreenCanvas = typeof OffscreenCanvas !== 'undefined';
@@ -78,7 +78,7 @@ export function isInstanceOfOffscreenCanvas(resource: FastAverageColorResource):
 }
 
 export function isInstanceOfHTMLVideoElement(resource: FastAverageColorResource): resource is HTMLVideoElement {
-    return typeof HTMLVideoElement !== 'undefined' && resource instanceof HTMLVideoElement;
+    return Object.prototype.toString.call(resource) === '[object HTMLVideoElement]';
 }
 
 export function isInstanceOfVideoFrame(resource: FastAverageColorResource): resource is VideoFrame {
@@ -86,7 +86,7 @@ export function isInstanceOfVideoFrame(resource: FastAverageColorResource): reso
 }
 
 export function isInstanceOfHTMLCanvasElement(resource: FastAverageColorResource): resource is HTMLCanvasElement {
-    return typeof HTMLCanvasElement !== 'undefined' && resource instanceof HTMLCanvasElement;
+    return Object.prototype.toString.call(resource) === '[object HTMLCanvasElement]';
 }
 
 export function isInstanceOfImageBitmap(resource: FastAverageColorResource): resource is ImageBitmap {

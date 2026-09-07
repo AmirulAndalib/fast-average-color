@@ -1,6 +1,7 @@
 # Changelog
 
 # Unreleased
+- Recognize HTML images, videos, and canvases across windows and iframes using their object tags.
 - Disable image smoothing after resizing the canvas so the setting is preserved during color sampling.
 - Configure Husky 9 pre-commit checks, pin GitHub Actions with read-only repository permissions, and use Node.js 26 in CI and publishing workflows.
 - Use `VideoFrame` display dimensions when calculating the average color to avoid sampling only part of a frame when its display and coded sizes differ.

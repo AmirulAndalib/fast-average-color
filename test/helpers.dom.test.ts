@@ -2,6 +2,36 @@ import 'jest-canvas-mock';
 import { getOriginalSize, isInstanceOfHTMLCanvasElement, isInstanceOfHTMLImageElement, isInstanceOfHTMLVideoElement, isInstanceOfImageBitmap, isInstanceOfOffscreenCanvas, isSvg, prepareSizeAndPosition } from '../src/helpers/dom';
 
 describe('Helpers: dom', () => {
+    describe.each([
+        { tag: 'img', check: isInstanceOfHTMLImageElement },
+        { tag: 'video', check: isInstanceOfHTMLVideoElement },
+        { tag: 'canvas', check: isInstanceOfHTMLCanvasElement },
+    ] as const)('$tag detection', ({ tag, check }) => {
+        it('recognizes an element from an iframe, including after adoption', () => {
+            const iframe = document.createElement('iframe');
+            document.body.appendChild(iframe);
+
+            try {
+                const element = iframe.contentDocument!.createElement(tag);
+                expect(check(element)).toBe(true);
+
+                document.adoptNode(element);
+                expect(check(element)).toBe(true);
+            } finally {
+                iframe.remove();
+            }
+        });
+
+        it('rejects null and other resource types', () => {
+            expect(check(null)).toBe(false);
+            for (const otherTag of ['img', 'video', 'canvas'] as const) {
+                if (otherTag !== tag) {
+                    expect(check(document.createElement(otherTag))).toBe(false);
+                }
+            }
+        });
+    });
+
     it('uses VideoFrame display dimensions for the canvas source rectangle', () => {
         // jsdom does not implement VideoFrame.
         class VideoFrameStub {
