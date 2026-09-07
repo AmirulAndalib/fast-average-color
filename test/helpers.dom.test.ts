@@ -1,7 +1,31 @@
 import 'jest-canvas-mock';
-import { isInstanceOfHTMLCanvasElement, isInstanceOfHTMLImageElement, isInstanceOfHTMLVideoElement, isInstanceOfImageBitmap, isInstanceOfOffscreenCanvas, isSvg, prepareSizeAndPosition } from '../src/helpers/dom';
+import { getOriginalSize, isInstanceOfHTMLCanvasElement, isInstanceOfHTMLImageElement, isInstanceOfHTMLVideoElement, isInstanceOfImageBitmap, isInstanceOfOffscreenCanvas, isSvg, prepareSizeAndPosition } from '../src/helpers/dom';
 
 describe('Helpers: dom', () => {
+    it('uses VideoFrame display dimensions for the canvas source rectangle', () => {
+        // jsdom does not implement VideoFrame.
+        class VideoFrameStub {
+            codedWidth = 200;
+            codedHeight = 100;
+            displayWidth = 400;
+            displayHeight = 300;
+        }
+
+        const original = Object.getOwnPropertyDescriptor(globalThis, 'VideoFrame');
+        Object.defineProperty(globalThis, 'VideoFrame', { configurable: true, value: VideoFrameStub });
+
+        try {
+            const frame = new VideoFrameStub() as unknown as VideoFrame;
+            expect(getOriginalSize(frame)).toEqual({ width: 400, height: 300 });
+        } finally {
+            if (original) {
+                Object.defineProperty(globalThis, 'VideoFrame', original);
+            } else {
+                Reflect.deleteProperty(globalThis, 'VideoFrame');
+            }
+        }
+    });
+
     it('#isSvg', () => {
         expect(isSvg('https://my-site.com/path/my.svg')).toBeTruthy();
         expect(isSvg('/path/my.png')).toBeFalsy();

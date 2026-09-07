@@ -36,8 +36,8 @@ export function getOriginalSize(resource: HTMLImageElement | HTMLVideoElement | 
 
     if (isInstanceOfVideoFrame(resource)) {
         return {
-            width: resource.codedWidth,
-            height: resource.codedHeight,
+            width: resource.displayWidth,
+            height: resource.displayHeight,
         };
     }
 
@@ -152,4 +152,3 @@ export function makeCanvas() {
 
     return document.createElement('canvas');
 }
-
