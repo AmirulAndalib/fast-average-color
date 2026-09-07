@@ -91,12 +91,11 @@ export class FastAverageColor {
 
                 return this.prepareResult(defaultColor, error);
             }
-
-            this.ctx.imageSmoothingEnabled = false;
         }
 
         this.canvas.width = size.destWidth;
         this.canvas.height = size.destHeight;
+        this.ctx.imageSmoothingEnabled = false;
 
         try {
             this.ctx.clearRect(0, 0, size.destWidth, size.destHeight);
