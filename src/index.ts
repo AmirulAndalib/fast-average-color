@@ -110,15 +110,9 @@ export class FastAverageColor {
             const bitmapData = this.ctx.getImageData(0, 0, size.destWidth, size.destHeight).data;
 
             return this.prepareResult(this.getColorFromArray4(bitmapData, options));
-        } catch (originalError) {
-            const error = getError(`security error (CORS) for resource ${getSrc(resource)}.\nDetails: https://developer.mozilla.org/en/docs/Web/HTML/CORS_enabled_image`);
+        } catch (error) {
             outputError(error, options.silent);
-
-            if (!options.silent) {
-                console.error(originalError);
-            }
-
-            return this.prepareResult(defaultColor, error);
+            return this.prepareResult(defaultColor, error as Error);
         }
     }
 

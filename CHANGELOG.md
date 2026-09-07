@@ -1,6 +1,7 @@
 # Changelog
 
 # Unreleased
+- Preserve original processing errors in `getColor` and `getColorAsync`, and log each error once instead of replacing it with a generic CORS error.
 - Recognize HTML images, videos, and canvases across windows and iframes using their object tags.
 - Disable image smoothing after resizing the canvas so the setting is preserved during color sampling.
 - Configure Husky 9 pre-commit checks, pin GitHub Actions with read-only repository permissions, and use Node.js 26 in CI and publishing workflows.

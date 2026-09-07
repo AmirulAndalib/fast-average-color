@@ -4,7 +4,7 @@ export function getError(message: string): Error {
     return Error(ERROR_PREFIX + message);
 }
 
-export function outputError(error: Error, silent?: boolean) {
+export function outputError(error: unknown, silent?: boolean) {
     if (!silent) {
         console.error(error);
     }

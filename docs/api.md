@@ -23,6 +23,10 @@
 
 Get the average color from a resource (loaded images, videos or canvas).
 
+If drawing, reading pixels, or calculating the color fails, the result contains
+`defaultColor` and the original `Error` or `DOMException` in `error`.
+Each error is logged once unless `silent` is `true`.
+
 ```js
 const fac = new FastAverageColor();
 let color;
@@ -77,6 +81,8 @@ color = fac.getColor(video);
  */
 ```
 Get asynchronously the average color from a resource (not loaded images, videos or canvas).
+If processing fails, the promise rejects with the same error that `getColor`
+would return in its result.
 ```js
 const fac = new FastAverageColor();
 
