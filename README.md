@@ -45,7 +45,6 @@ A simple library that calculates average or dominant color of any images or vide
   + [.getColorAsync(resource, [options])](./docs/api.md#getcolorasyncresource-options)
   + [.getColorFromArray4(arr, [options])](./docs/api.md#getcolorfromarray4arr-options)
   + [.destroy()](./docs/api.md#destroy)
-- [Different Builds](./dist/README.md)
 - [Development](./docs/development.md)
 
 ## Unhandled Rejection (SecurityError): The operation is insecure.

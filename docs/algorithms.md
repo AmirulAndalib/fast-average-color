@@ -8,5 +8,5 @@
 
 ```js
 const fac = new FastAverageColor();
-console.log(fac.getColor(image, {algorithm: 'dominant'});
+console.log(fac.getColor(image, {algorithm: 'dominant'}));
 ```

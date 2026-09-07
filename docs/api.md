@@ -31,20 +31,20 @@ let color;
 color = fac.getColor(image);
 
 // From loaded image with default color
-color = fac.getColor({
+color = fac.getColor(image, {
     defaultColor: [255, 0, 0, 255] // red
 });
 
 // From loaded image with ignored color
 // For example, to ignore the white background in logos
-color = fac.getColor({
+color = fac.getColor(image, {
     ignoredColor: [255, 255, 255, 255] // white
 });
 
 
 // From loaded image with precision
 // Modes: 'speed' (by default) or 'precision'.
-color = fac.getColor({
+color = fac.getColor(image, {
     mode: 'precision'
 });
 
@@ -107,7 +107,7 @@ fac.getColorAsync(image, { algorithm: 'dominant' })
  * @param {Array|Uint8Array|Uint8ClampedArray} arr
  * @param {Object} [options]
  * @param {string} [options.algorithm="sqrt"] "simple", "sqrt" or "dominant"
- * @param {Array}  [options.defaultColor=[255, 255, 255, 255]]
+ * @param {Array}  [options.defaultColor=[0, 0, 0, 0]]
  * @param {Array}  [options.ignoredColor] [red (0-255), green (0-255), blue (0-255), alpha (0-255)]
  * @param {number} [options.step=1] Positive safe integer (1 to Number.MAX_SAFE_INTEGER)
  *
@@ -125,7 +125,7 @@ const buffer = [
 ];
 const color = fac.getColorFromArray4(buffer);
 console.log(color);
-// [150, 150, 150, 255]
+// [158, 158, 158, 255]
 ```
 
 
