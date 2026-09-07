@@ -1,6 +1,7 @@
 # Changelog
 
 # Unreleased
+- Configure Husky 9 pre-commit checks, pin GitHub Actions with read-only repository permissions, and use Node.js 26 in CI and publishing workflows.
 - Use `VideoFrame` display dimensions when calculating the average color to avoid sampling only part of a frame when its display and coded sizes differ.
 - Validate `step` as a positive safe integer to prevent infinite loops and incorrect pixel sampling. Invalid values, including `0` and `NaN`, now throw when processing pixel data instead of silently falling back to `1` or producing incorrect results.
 

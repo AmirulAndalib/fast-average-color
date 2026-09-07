@@ -52,11 +52,6 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.69.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  },
   "scripts": {
     "build": "npm run clean && npm run rollup && npm run minify && npm run copyright",
     "clean": "del dist/*",
@@ -66,7 +61,7 @@
     "test": "npm run typecheck && npm run eslint && npm run unit-test",
     "eslint": "eslint .",
     "unit-test": "jest .",
-    "prepare": "npm run build",
+    "prepare": "npm run build && husky",
     "typecheck": "tsc --noEmit"
   }
 }
