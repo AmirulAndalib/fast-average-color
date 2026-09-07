@@ -138,7 +138,11 @@ export class FastAverageColor {
         }
 
         const len = arrLength - arrLength % bytesPerPixel;
-        const step = (options.step || 1) * bytesPerPixel;
+        const step = options.step === undefined ? 1 : options.step;
+
+        if (!Number.isSafeInteger(step) || step <= 0) {
+            throw getError('step must be a positive safe integer');
+        }
 
         let algorithm;
 
@@ -159,7 +163,7 @@ export class FastAverageColor {
         return algorithm(arr, len, {
             defaultColor,
             ignoredColor: prepareIgnoredColor(options.ignoredColor),
-            step,
+            step: step * bytesPerPixel,
             dominantDivider: options.dominantDivider,
         });
     }

@@ -1,5 +1,8 @@
 # Changelog
 
+# Unreleased
+- Validate `step` as a positive safe integer to prevent infinite loops and incorrect pixel sampling. Invalid values, including `0` and `NaN`, now throw when processing pixel data instead of silently falling back to `1` or producing incorrect results.
+
 # v9.5.2
 - Fixed image loading completion check.
 

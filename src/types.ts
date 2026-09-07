@@ -9,6 +9,7 @@ export interface FastAverageColorOptions {
     ignoredColor?: FastAverageColorIgnoredColor;
     mode?: 'precision' | 'speed';
     algorithm?: 'simple' | 'sqrt' | 'dominant';
+    /** Positive safe integer specifying the pixel sampling interval. Defaults to 1. */
     step?: number;
     left?: number;
     top?: number;

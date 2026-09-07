@@ -10,7 +10,7 @@
  * @param {number[] | number[][]}  [options.ignoredColor] [red (0-255), green (0-255), blue (0-255), alpha (0-255)]
  * @param {string} [options.mode="speed"] "precision" or "speed"
  * @param {string} [options.algorithm="sqrt"] "simple", "sqrt" or "dominant"
- * @param {number} [options.step=1]
+ * @param {number} [options.step=1] Positive safe integer (1 to Number.MAX_SAFE_INTEGER)
  * @param {number} [options.left=0]
  * @param {number} [options.top=0]
  * @param {number} [options.width=width of resource]
@@ -66,7 +66,7 @@ color = fac.getColor(video);
  * @param {Array}  [options.ignoredColor] [red (0-255), green (0-255), blue (0-255), alpha (0-255)]
  * @param {string} [options.mode="speed"] "precision" or "speed"
  * @param {string} [options.algorithm="sqrt"] "simple", "sqrt" or "dominant"
- * @param {number} [options.step=1]
+ * @param {number} [options.step=1] Positive safe integer (1 to Number.MAX_SAFE_INTEGER)
  * @param {number} [options.left=0]
  * @param {number} [options.top=0]
  * @param {number} [options.width=width of resource]
@@ -109,7 +109,7 @@ fac.getColorAsync(image, { algorithm: 'dominant' })
  * @param {string} [options.algorithm="sqrt"] "simple", "sqrt" or "dominant"
  * @param {Array}  [options.defaultColor=[255, 255, 255, 255]]
  * @param {Array}  [options.ignoredColor] [red (0-255), green (0-255), blue (0-255), alpha (0-255)]
- * @param {number} [options.step=1]
+ * @param {number} [options.step=1] Positive safe integer (1 to Number.MAX_SAFE_INTEGER)
  *
  * @returns {Array} [red (0-255), green (0-255), blue (0-255), alpha (0-255)]
  */
